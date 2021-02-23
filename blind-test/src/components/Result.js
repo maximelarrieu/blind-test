@@ -1,14 +1,16 @@
 import React from 'react'
 import { Button } from '@material-ui/core';
 
+import "../styles/Home.css"
 
 function Result() {
     return (
         <>
-        <h1>RESULT</h1>
-        <p>Votre score est : score</p>
-        <p>Merci d'avoir joué!</p>
-        <Button variantt="contained" color="primary">REJOUER</Button>
+        <div class="center">
+            <p>Votre score est : score</p>
+            <p>Merci d'avoir joué!</p>
+            <Button variant="contained" color="primary">REJOUER</Button>
+        </div>
         </>
     )
 }
