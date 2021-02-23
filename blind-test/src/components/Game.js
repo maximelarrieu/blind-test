@@ -3,8 +3,9 @@ import { Button } from '@material-ui/core';
 
 function Game() {
     return (
-        <Button variantt="contained" color="primary">Hello World</Button>
-        
+        <Button variant="contained" color="primary">
+            <a href="/question">New game</a>
+        </Button>
     )
 }
 

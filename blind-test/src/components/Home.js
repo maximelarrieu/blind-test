@@ -6,10 +6,12 @@ import "../styles/Home.css"
 
 function Home() {
     return (
-        <div className="test">
+        <div className="center">
             <img src="https://icotar.com/initials/user" alt="avatar" style={{width:50}}/>
             <h1>Welcome --user--</h1>
-            <Button variant="contained" color="primary">Take a new game</Button>
+            <Button variant="contained" color="primary">
+                <a href="/game">Take a new game</a>
+            </Button>
         </div>
     )
 }
