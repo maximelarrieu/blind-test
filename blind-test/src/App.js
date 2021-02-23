@@ -3,19 +3,20 @@ import './App.css';
 
 import { BrowserRouter as Router, Route, Switch, PrivateRoute} from 'react-router-dom'
 
+import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Game from './components/Game'
 
 function App() {
   return (
     <Router>
-      {/* <Navbar /> */}
+      <NavBar />
       <Switch>
         {/* <Route path="/login" component={Login} /> */}
         <Route path="/game" component={Game} />
         {/*<Route path="/question" component={Question} />
         <Route path="/result" component={Result} />
-        <Route path="/profil" component={Profil} /> */}
+        <Route path="/profile" component={Profil} /> */}
         <Route path="/" component={Home} />
       </Switch>
     </Router>
