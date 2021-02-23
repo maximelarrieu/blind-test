@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch, PrivateRoute} from 'react-router-dom'
 
 import Home from './components/Home'
+import Game from './components/Game'
 
 function App() {
   return (
@@ -11,11 +12,11 @@ function App() {
       {/* <Navbar /> */}
       <Switch>
         {/* <Route path="/login" component={Login} /> */}
-        <Route path="/" component={Home} />
-        {/* <Route path="/game" component={Game} />
-        <Route path="/question" component={Question} />
+        <Route path="/game" component={Game} />
+        {/*<Route path="/question" component={Question} />
         <Route path="/result" component={Result} />
         <Route path="/profil" component={Profil} /> */}
+        <Route path="/" component={Home} />
       </Switch>
     </Router>
   );
