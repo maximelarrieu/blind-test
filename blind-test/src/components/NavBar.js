@@ -7,7 +7,7 @@ function NavBar() {
         <AppBar position="static">
             <Toolbar>
                 <Button>
-                    <a href="/">Game</a>
+                    <a href="/game">Game</a>
                 </Button>
                 <Button>
                     <a href="/profile">Profile</a>
