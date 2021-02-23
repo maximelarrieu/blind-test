@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import { BrowserRouter as Router, Route, Switch, PrivateRoute} from 'react-router-dom'
@@ -9,13 +8,14 @@ import Game from './components/Game'
 import Question from './components/Question'
 import Profile from './components/Profile'
 import Result from './components/Result'
+import Authenticate from './components/Authenticate'
 
 function App() {
   return (
     <Router>
       <NavBar />
       <Switch>
-        {/* <Route path="/login" component={Login} /> */}
+        <Route path="/login" component={Authenticate} />
         <Route path="/game" component={Game} />
         <Route path="/question" component={Question} />
         <Route path="/result" component={Result} />
