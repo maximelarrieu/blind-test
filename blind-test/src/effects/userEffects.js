@@ -1,4 +1,4 @@
-// import firebase from "firebase";
+import firebase from "firebase";
 import apiHelper from "../apiHelper";
 import { userActions } from "../reducers/userReducer";
 
