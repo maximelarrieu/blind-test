@@ -2,9 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 // import "./Authenticate.css";
+import { userReducer } from "../reducers/userReducer"
 import { authenticateUser } from "../effects/userEffects";
 
 const Authenticate = () => {
+  // const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  // const state = {};
+  const player = useSelector((state) => state.user.player)
+  console.log(player)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [canSignIn, setCanSignIn] = useState(false);
@@ -14,7 +19,7 @@ const Authenticate = () => {
     (state) => state.user.isAuthenticated
   );
   const history = useHistory();
-  const { from } = useLocation().state || { from: { pathname: "/" } };
+  const { from } = useLocation().state || { from: { pathname: "/profile" } };
   const signInSuccess = () => {
     history.replace(from);
   };
