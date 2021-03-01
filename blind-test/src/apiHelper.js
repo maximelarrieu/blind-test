@@ -1,4 +1,4 @@
-// import firebase from "firebase";
+import firebase from "firebase";
 const apiRoot = "https://europe-west1-ynov-b3-21.cloudfunctions.net/";
 
 const handleError = (err) => {
