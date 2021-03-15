@@ -4,11 +4,11 @@ import {Button} from '@material-ui/core'
 import "../styles/Home.css"
 
 
-function Home({props}) {
+function Home() {
     return ( 
         <div className="center">
-            <img src="https://icotar.com/initials/user" alt="avatar" style={{width:50}}/>
-            <h1>Welcome {props.name}</h1>
+            <img src="" alt="avatar"/>
+            <h1>Welcome</h1>
             <Button variant="contained" color="primary">
                 <a href="/game">Take a new game</a>
             </Button>

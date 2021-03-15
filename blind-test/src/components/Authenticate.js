@@ -1,85 +1,53 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useHistory } from "react-router-dom";
-// import "./Authenticate.css";
-import { userReducer } from "../reducers/userReducer"
-import { authenticateUser } from "../effects/userEffects";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { signin, signup } from "../firebase";
+import {appActions} from "../actions/appActions"
+import { Input, TextField, Button } from '@material-ui/core'
 
-const Authenticate = () => {
-  // const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  // const state = {};
-  const player = useSelector((state) => state.user.player)
-  console.log(player)
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [canSignIn, setCanSignIn] = useState(false);
+
+const Authentication = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.user.isLoading);
-  const isAuthenticated = useSelector(
-    (state) => state.user.isAuthenticated
-  );
-  const history = useHistory();
-  const { from } = useLocation().state || { from: { pathname: "/profile" } };
-  const signInSuccess = () => {
-    history.replace(from);
-  };
-  useEffect(() => {
-    // Verify email format is correct
-    let emailIsValid = false;
-    if (
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        email
+
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+    // playerName: ""
+  })
+
+  const handleInputChange = (event) => {
+    const value = event.target.value
+    setState({
+      ...state, 
+      [event.target.name]: value,
+    })
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // dispatch({ type: appActions.APP_IS_LOADING });
+    console.log(state.email)
+    console.log(state.password)
+    // console.log(state.playerName)
+    signin(
+      state.email,
+      state.password,
+      // state.playerName,
+      dispatch,
       )
-    ) {
-      emailIsValid = true;
-    }
-    // Verify password format is correct
-    let passwordIsValid = false;
-    if (password.length >= 6) {
-      passwordIsValid = true;
-    }
-    setCanSignIn(emailIsValid && passwordIsValid);
-  }, [email, password]);
-  useEffect(() => {
-    if (isAuthenticated) history.replace("/");
-  }, [isAuthenticated, history]);
+
+  }
+
   return (
-    <div className="auth-root">
-      <img src="/assets/logo.png" alt="Blind test logo" />
-      <p>Sign In</p>
-      {isLoading ? (
-        <img
-          src="/assets/spinner.svg"
-          alt="Loading animation"
-          style={{ height: "50px" }}
-        />
-      ) : (
-        <div className="auth-form">
-          <input
-            type="text"
-            placeholder="Email address"
-            value={email}
-            onChange={(evt) => setEmail(evt.target.value)}
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(evt) => setPassword(evt.target.value)}
-          />
-          <button
-            onClick={() =>
-              dispatch(
-                authenticateUser(email, password, signInSuccess)
-              )
-            }
-            disabled={!canSignIn}
-          >
-            Go
-          </button>
-        </div>
-      )}
-    </div>
+    <div>
+    <h1>oui</h1>
+    <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+      {/* <TextField id="standard-basic" label="Standard" name="playername" value={state.playerName} onChange={handleInputChange} /> */}
+      <TextField id="filled-basic" label="Filled" variant="filled" name="email" value={state.email} onChange={handleInputChange}/>
+      <TextField id="outlined-basic" label="Outlined" variant="outlined" name="password" value={state.password} onChange={handleInputChange}/>
+      <Button type="submit">TEST</Button>
+    </form>
+  </div>
   );
 };
 
-export default Authenticate
+export default Authentication;
