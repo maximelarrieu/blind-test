@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import Gameplay from "./GamePlay";
 import { incrementPlayerNbPlayed } from "../actions/playerActions";
 
+import '../styles/Home.css'
+
 const Game = ({}) => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -33,22 +35,22 @@ const Game = ({}) => {
     dispatch(incrementPlayerNbPlayed());
   };
   return (
-    <>
+    <div className="center">
       <h1 style={{ marginBottom: 64 }}>
-        Game
+        BLIND TEST
       </h1>
       {answers && answers.length > 0 ? (
         <>
           <h3>Votre score: {score}</h3>
           <h3>Merci d'avoir joué</h3>
-          <Button onClick={() => getNewGame()}>New Game</Button>
+          <Button variant="contained" color="primary" onClick={() => getNewGame()}>New Game</Button>
         </>
       ) : questions && questions.length > 0 ? (
         <Gameplay questions={questions} finishGame={finishGame} />
       ) : (
-        <Button onClick={() => getNewGame()}>New Game</Button>
+        <Button variant="contained" color="primary" onClick={() => getNewGame()}>New Game</Button>
       )}
-    </>
+    </div>
   )
 };
 

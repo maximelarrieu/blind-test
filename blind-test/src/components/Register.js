@@ -4,21 +4,20 @@ import {signup} from '../firebase'
 import {appActions} from "../actions/appActions"
 import { Redirect } from 'react-router-dom'
 
+import "../styles/Home.css"
+
 import { Input, TextField, Button } from '@material-ui/core'
 
 const RegisterComponent = () => {
-  // const [values, setValues] = useState(initialValues)
     const [setPlayerName, playerName] = useState('')
     const [setEmail, email] = useState('')
     const [password, setPassword] = useState('')
     const [state, setState] = useState({
       email: "",
       password: "",
-      playerName: ""
+      playername: ""
     })
-
-    const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
     const value = event.target.value
@@ -34,35 +33,27 @@ const RegisterComponent = () => {
       signup(
         state.email,
         state.password,
-        state.playerName,
+        state.playername,
         dispatch,
         )
     }
 
     return(
-        <div>
-            <h1>oui</h1>
+        <div className="center">
+            <h1>Register</h1>
             <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-              <TextField id="standard-basic" label="Standard" name="playername" value={state.playerName} onChange={handleInputChange} />
-              <TextField id="filled-basic" label="Filled" variant="filled" name="email" value={state.email} onChange={handleInputChange}/>
-              <TextField id="outlined-basic" label="Outlined" variant="outlined" name="password" value={state.password} onChange={handleInputChange}/>
-              <Button type="submit" >TEST</Button>
+              <p>
+              <TextField id="filled-basic" label="Username" variant="filled" name="playername" value={state.playername} onChange={handleInputChange} />
+              </p>
+              <p>
+              <TextField id="filled-basic" label="Email" variant="filled" name="email" value={state.email} onChange={handleInputChange}/>
+              </p>
+              <p>
+              <TextField id="outlined-basic" type="password" label="Password" variant="filled" name="password" value={state.password} onChange={handleInputChange}/>
+              </p>
+              <Button variant="contained" color="primary" type="submit">Sign Up</Button>
             </form>
         </div>
     )
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     playername: state.playername
-//   }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-    
-//   }
-// }
-
-// const Register = connect(null, null)(RegisterComponent)
 export default RegisterComponent

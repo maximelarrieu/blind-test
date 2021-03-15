@@ -10,14 +10,17 @@ function NavBar() {
     return (
         <AppBar position="static">
             <Toolbar>
-                <Button>
-                    <a href="/game">Game</a>
-                </Button>
+                
                 {
                     isAuthenticated ?
+                    <>
+                    <Button>
+                        <a href="/game">Game</a>
+                    </Button>
                     <Button>
                         <a href="/profile">Profile</a>
                     </Button>
+                    </>
                     :
                     <>
                     <Button>

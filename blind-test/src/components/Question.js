@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Text, Image } from "react";
-import { Card, Layout } from "@material-ui/core";
+import { Card, Layout, List, ListItem, Button } from "@material-ui/core";
 import ReactAudioPlayer from 'react-audio-player';
 
 const Question = ({ data, chooseAnswer, startTime }) => {
@@ -12,7 +12,7 @@ const Question = ({ data, chooseAnswer, startTime }) => {
     });
   };
   const Answer = ({ answerIndex }) => (
-    <Card
+    <Button variant="contained" color="primary"
       style={{ flex: 1, margin: 8 }}
       onClick={() => makeChoice(answerIndex)}
     >
@@ -25,28 +25,9 @@ const Question = ({ data, chooseAnswer, startTime }) => {
       ) : (
         <h3>{data.answers[answerIndex]}</h3>
       )}
-    </Card>
+    </Button>
   );
 
-  // useEffect(() => {
-  //   return () => {
-  //     if (sound) {
-  //       console.log("Unloading Sound");
-  //       sound.unloadAsync();
-  //     }
-  //   };
-  // }, [sound]);
-
-  // useEffect(() => {
-  //   const playSound = async () => {
-  //     const { sound } = await Audio.Sound.createAsync({
-  //       uri: data.audio_url,
-  //     });
-  //     setSound(sound);
-  //     // await sound.playAsync();
-  //   };
-  //   playSound();
-  // }, [data.id]);
   return (
     <>
       <h1 category="h5" style={{ textAlign: "center" }}>
@@ -60,11 +41,14 @@ const Question = ({ data, chooseAnswer, startTime }) => {
         <Answer answerIndex={2} />
         <Answer answerIndex={3} />
       </>
+      <p>
       <ReactAudioPlayer
         src={ data.audio_url}
         autoPlay
         controls
+        volume={0.2}
       />
+      </p>
     </>
   );
 };
